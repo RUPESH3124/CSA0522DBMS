@@ -1,0 +1,77 @@
+mysql> select * from table_faculty;
++------------+--------------+-----------+-----------+--------+------+------------+
+| faculty_no | faculty_name | mobile_no | dept_name | gender | age  | DOB        |
++------------+--------------+-----------+-----------+--------+------+------------+
+|          1 | anu          | 934745595 | CSE       | FEMALE |   30 | 1993-02-23 |
+|          2 | ajay         | 963258741 | EEE       | MALE   |   65 | 1968-03-23 |
+|          2 | ram          |  85236971 | IT        | MALE   |   50 | 1983-05-01 |
++------------+--------------+-----------+-----------+--------+------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select reg_no, name, DOB from student;
++-----------+--------+------------+
+| reg_no    | name   | DOB        |
++-----------+--------+------------+
+| 192211888 | sriram | 2004-08-17 |
+| 192211109 | hema   | 2004-08-16 |
+| 191711342 | mahesh | 2004-09-10 |
++-----------+--------+------------+
+3 rows in set (0.00 sec)
+
+2)
+mysql> select * from student;
++-----------+--------+--------+------------+
+| reg_no    | name   | gender | DOB        |
++-----------+--------+--------+------------+
+| 192211888 | sriram | M      | 2004-08-17 |
+| 192211109 | hema   | F      | 2004-08-16 |
+| 191711342 | mahesh | M      | 2004-09-10 |
++-----------+--------+--------+------------+
+3 rows in set (0.00 sec)
+mysql> select * from student where gender='F';
++-----------+------+--------+------------+
+| reg_no    | name | gender | DOB        |
++-----------+------+--------+------------+
+| 192211109 | hema | F      | 2004-08-16 |
++-----------+------+--------+------------+
+1 row in set (0.05 sec)
+
+3)
+mysql> use db_department;
+Database changed
+mysql> desc course_registration;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| student_name | varchar(10) | YES  |     | NULL    |       |
+| course_name  | varchar(10) | YES  |     | NULL    |       |
+| course_code  | varchar(10) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.08 sec)
+
+mysql> insert into course_registration values('ajay','python','c001');
+Query OK, 1 row affected (0.06 sec)
+mysql> insert into course_registration values('hema','java','c003');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into course_registration values('ramsai','dbms','c004');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from course_registration;
++--------------+-------------+-------------+
+| student_name | course_name | course_code |
++--------------+-------------+-------------+
+| arun         | python      | c001        |
+| ajay         | python      | c001        |
+| hema         | java        | c003        |
+| ramsai       | dbms        | c004        |
++--------------+-------------+-------------+
+4 rows in set (0.00 sec)
+mysql>  select student_name from course_registration where course_code='c001';
++--------------+
+| student_name |
++--------------+
+| arun         |
+| ajay         |
++--------------+
+2 rows in set (0.01 sec)
